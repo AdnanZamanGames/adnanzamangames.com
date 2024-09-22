@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Image Example</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      font-family: Arial, sans-serif;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('AdnanZaman.png');
+      background-size: 200%;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    body {
+      background-color: rgba(128, 128, 128, 0.1);
+    }
+
+    .header {
+      background-color: green; /* Green background */
+      width: 100%;
+      padding: 10px; /* Space around the text */
+      display: flex;
+      justify-content: space-around; /* Space items evenly */
+      color: white; /* Text color */
+    }
+
+    .text-image,
+    .about-content,
+    .contact-message {
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .text-image {
+      margin-top: -60px; /* Keep this for vertical adjustment */
+      margin-left: -645px; /* Move it further left */
+    }
+
+    .below-image-text {
+      margin-top: -120px; /* Space from the top */
+      margin-left: 120px; /* Move it to the right */
+    }
+
+    .button-image {
+      position: absolute; /* Keep it absolute to control position */
+      bottom: 300px; /* Adjusted value to move it down */
+      left: 140px; /* Position from the left */
+    }
+
+    .hidden {
+      display: none; /* Class to hide elements */
+    }
+
+    .about-content, .contact-message {
+      margin-top: 20px; /* Space from the top */
+      text-align: center; /* Center the text */
+      color: black; /* Text color */
+      width: 100%; /* Full width for the about content */
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header with links -->
+<div class="header">
+  <a href="javascript:void(0);" onclick="showHome()">Home</a>
+  <a href="javascript:void(0);" onclick="showAbout()">About</a>
+  <a href="javascript:void(0);" onclick="showContact()">Contact</a>
+</div>
+
+<div class="main-content">
+  <img src="AdnanDetails.png" alt="Below Image Text" class="below-image-text">
+  <img src="AdnanRemoveBG.png" alt="Text Image" class="text-image">
+
+  <!-- Button image aligned to the right -->
+  <img src="Screenshot%202024-09-21%20222450.png" alt="Button" class="button-image" onclick="redirectToGame()">
+</div>
+
+<!-- About content with an image -->
+<div class="about-content hidden">
+  <img src="About%20content.png" alt="About Image"> <!-- Replace with your image path -->
+  <img src="BackButtonImage.png" alt="Back" onclick="showMainContent()" style="cursor: pointer;"> <!-- Replace with your back button image path -->
+</div>
+
+<!-- Contact message -->
+<div class="contact-message hidden">
+  <p>If you have feedback, please contact at <a href="mailto:adnanzamanador@gmail.com">adnanzamanador@gmail.com</a>.</p>
+  <img src="BackButtonImage.png" alt="Back" onclick="showHome()" style="cursor: pointer;"> <!-- Replace with your back button image path -->
+</div>
+
+<script>
+  function redirectToGame() {
+    // Open the specified URL in a new tab
+    window.open('https://adnanzamangames.itch.io/', '_blank');
+  }
+
+  function showHome() {
+    // Show main content and hide about and contact content
+    document.querySelector('.text-image').classList.remove('hidden');
+    document.querySelector('.below-image-text').classList.remove('hidden');
+    document.querySelector('.button-image').classList.remove('hidden');
+    document.querySelector('.about-content').classList.add('hidden'); // Hide about content
+    document.querySelector('.contact-message').classList.add('hidden'); // Hide contact message
+  }
+
+  function showAbout() {
+    // Hide main content and show about content
+    document.querySelector('.text-image').classList.add('hidden');
+    document.querySelector('.below-image-text').classList.add('hidden');
+    document.querySelector('.button-image').classList.add('hidden');
+    document.querySelector('.about-content').classList.remove('hidden'); // Show about content
+    document.querySelector('.contact-message').classList.add('hidden'); // Hide contact message
+  }
+
+  function showContact() {
+    // Hide main content and show contact message
+    document.querySelector('.text-image').classList.add('hidden');
+    document.querySelector('.below-image-text').classList.add('hidden');
+    document.querySelector('.button-image').classList.add('hidden');
+    document.querySelector('.about-content').classList.add('hidden'); // Hide about content
+    document.querySelector('.contact-message').classList.remove('hidden'); // Show contact message
+  }
+
+  function showMainContent() {
+    // Show all main content again
+    showHome(); // Reuse the function to show home
+  }
+</script>
+</body>
+</html>
