@@ -1,3 +1,0 @@
-[build]
-  publish = "adnanzamangames.com html/"
-  command = "npm run build"
